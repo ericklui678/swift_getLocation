@@ -12,6 +12,7 @@
 		5E8BF1B11EB0DB4A0083A772 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8BF1AF1EB0DB4A0083A772 /* Main.storyboard */; };
 		5E8BF1B31EB0DB4A0083A772 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8BF1B21EB0DB4A0083A772 /* Assets.xcassets */; };
 		5E8BF1B61EB0DB4A0083A772 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8BF1B41EB0DB4A0083A772 /* LaunchScreen.storyboard */; };
+		F4764F8E1F18977E00EBB98F /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4764F8D1F18977E00EBB98F /* DescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		5E8BF1B21EB0DB4A0083A772 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E8BF1B51EB0DB4A0083A772 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E8BF1B71EB0DB4A0083A772 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4764F8D1F18977E00EBB98F /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				5E8BF1AB1EB0DB4A0083A772 /* AppDelegate.swift */,
 				5E8BF1AD1EB0DB4A0083A772 /* SearchViewController.swift */,
+				F4764F8D1F18977E00EBB98F /* DescriptionViewController.swift */,
 				5E8BF1AF1EB0DB4A0083A772 /* Main.storyboard */,
 				5E8BF1B21EB0DB4A0083A772 /* Assets.xcassets */,
 				5E8BF1B41EB0DB4A0083A772 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4764F8E1F18977E00EBB98F /* DescriptionViewController.swift in Sources */,
 				5E8BF1AE1EB0DB4A0083A772 /* SearchViewController.swift in Sources */,
 				5E8BF1AC1EB0DB4A0083A772 /* AppDelegate.swift in Sources */,
 			);

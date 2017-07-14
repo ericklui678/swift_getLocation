@@ -24,6 +24,22 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
         searchCompleter.delegate = self
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // this gets printed when DescripVC loads
+        let nav = segue.destination as! UINavigationController
+        let descripVC = nav.topViewController as! DescriptionViewController
+        descripVC.annotation = sender
+    }
+    
+    @IBAction func unwindToSearchVC(_ segue: UIStoryboardSegue){
+        let descripVC = segue.source as! DescriptionViewController
+        if let a = descripVC.annotation as? MKPointAnnotation {
+            a.subtitle = descripVC.descripLabel.text!
+        }
+        
+        
+    }
+    
     // adding disclosure button to annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -37,9 +53,6 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
             pinView!.canShowCallout = true
             pinView!.animatesDrop = true
         }
-        
-
-        
         
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
         button.backgroundColor = .red
@@ -59,7 +72,7 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
         if control.frame.size.height == 50.0 {
             mapView.removeAnnotation(mapView.annotations[0])
         } else {
-            
+            performSegue(withIdentifier: "DescriptionSegue", sender: mapView.annotations[0])
         }
     }
     
