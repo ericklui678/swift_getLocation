@@ -86,9 +86,12 @@ extension SearchViewController: UITableViewDelegate {
             let country = response?.mapItems[0].placemark.country
             let name = response?.mapItems[0].name
             print("\nName: \(name!)\nCountry: \(country!)\nCoordinates: \(coordinate!)")
-            var annotation = MKPointAnnotation()
+            let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate!
             self.map.addAnnotation(annotation)
+            annotation.title = name
+            annotation.subtitle = country
+            self.map.setRegion(MKCoordinateRegionMakeWithDistance(coordinate!, 100000, 100000), animated: true)
             print("Print coords")
             self.map.isHidden = false
         }
