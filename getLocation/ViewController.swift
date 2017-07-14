@@ -21,7 +21,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // set variable to most recent location
     let location = locations[0]
     // how much we're zoomed into our current location
-    let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+    let span: MKCoordinateSpan = MKCoordinateSpanMake(100, 100)
     let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
     let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
     mapView.setRegion(region, animated: true)
@@ -55,8 +55,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     manager.requestWhenInUseAuthorization()
     // call function every time location is updated
     manager.startUpdatingLocation()
+    
+    
+    let location = CLLocationCoordinate2DMake(41.878114, -87.629798)
+    
+    mapView.setRegion(MKCoordinateRegionMakeWithDistance(location, 1500, 1500), animated: true)
+    
+    let pin = PinAnnotation(title: "Chicago", subtitle: "Great City to witness", coordinate: location)
+    
+    mapView.addAnnotation(pin)
+    
   }
-  
+    
+    
+
+    
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
