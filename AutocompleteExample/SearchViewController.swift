@@ -7,7 +7,6 @@
 //
 //  Edited by Kaan Kabalak and Erick Lui
 //
-
 import UIKit
 import MapKit
 
@@ -39,7 +38,14 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
             pinView!.animatesDrop = true
         }
         
-        var button = UIButton(type: UIButtonType.detailDisclosure) as UIButton // button with info sign in it
+
+        
+        
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+        button.backgroundColor = .red
+        button.setTitle("X", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+
         
         pinView?.rightCalloutAccessoryView = button
         
