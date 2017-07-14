@@ -5,7 +5,7 @@
 //  Created by George McDonnell on 26/04/2017.
 //  Copyright © 2017 George McDonnell. All rights reserved.
 //
-//  Edited by Kaan Kabalak
+//  Edited by Kaan Kabalak and Erick Lui
 //
 
 import UIKit
@@ -45,6 +45,10 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
         
         
         return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        mapView.removeAnnotation(mapView.annotations[0])
     }
     
 }
