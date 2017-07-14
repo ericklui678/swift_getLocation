@@ -44,17 +44,23 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
         button.backgroundColor = .red
         button.setTitle("X", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
-
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
+        
+        let infoButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
         
         pinView?.rightCalloutAccessoryView = button
+        pinView?.leftCalloutAccessoryView = infoButton
         
         
         return pinView
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        mapView.removeAnnotation(mapView.annotations[0])
+        if control.frame.size.height == 50.0 {
+            mapView.removeAnnotation(mapView.annotations[0])
+        } else {
+            
+        }
     }
     
 }
