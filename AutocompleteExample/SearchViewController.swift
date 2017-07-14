@@ -5,12 +5,15 @@
 //  Created by George McDonnell on 26/04/2017.
 //  Copyright © 2017 George McDonnell. All rights reserved.
 //
+//  Edited by Kaan Kabalak
+//
 
 import UIKit
 import MapKit
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var map: MKMapView!
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     
@@ -27,8 +30,13 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("searching")
+        map.isHidden = true
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        map.isHidden = true
         searchCompleter.queryFragment = searchText
     }
 }
@@ -78,6 +86,7 @@ extension SearchViewController: UITableViewDelegate {
             let country = response?.mapItems[0].placemark.country
             let name = response?.mapItems[0].name
             print("\nName: \(name!)\nCountry: \(country!)\nCoordinates: \(coordinate!)")
+            self.map.isHidden = false
         }
     }
 }
