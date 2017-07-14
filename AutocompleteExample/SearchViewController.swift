@@ -11,7 +11,7 @@
 import UIKit
 import MapKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var map: MKMapView!
     var searchCompleter = MKLocalSearchCompleter()
@@ -21,9 +21,30 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        map.delegate = self
         searchCompleter.delegate = self
+    }
+    
+    // adding disclosure button to annotation
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            //println("Pinview was nil")
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.animatesDrop = true
+        }
+        
+        var button = UIButton(type: UIButtonType.detailDisclosure) as UIButton // button with info sign in it
+        
+        pinView?.rightCalloutAccessoryView = button
+        
+        
+        return pinView
     }
     
 }
