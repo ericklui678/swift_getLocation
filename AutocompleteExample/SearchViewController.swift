@@ -5,13 +5,12 @@
 //  Created by George McDonnell on 26/04/2017.
 //  Copyright © 2017 George McDonnell. All rights reserved.
 //
-//  Edited by Kaan Kabalak
+//  Edited by Kaan Kabalak and Erick Lui
 //
-
 import UIKit
 import MapKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var map: MKMapView!
     var searchCompleter = MKLocalSearchCompleter()
@@ -21,9 +20,39 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        map.delegate = self
         searchCompleter.delegate = self
+    }
+    
+    // adding disclosure button to annotation
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            //println("Pinview was nil")
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.animatesDrop = true
+        }
+        
+        
+        
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+        button.backgroundColor = .red
+        button.setTitle("X", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        
+        pinView?.rightCalloutAccessoryView = button
+        
+        
+        return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        mapView.removeAnnotation(mapView.annotations[0])
     }
     
 }
